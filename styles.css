@@ -1,5 +1,5 @@
 body {
-    background-color: ;
+    background-color: #fffefa;
 }
 
 body {
@@ -10,18 +10,24 @@ body {
     color:#E05180;
     font-size: larger;
 }
+h3 {
+  color: #53891d;
+   font-weight: 300;
+}
+
+
 
 
 /* Color Theme Swatches in Hex */
-.My-Color-Theme-1-hex { color: #99E051; }
+.My-Color-Theme-1-hex { color: #86d635; }
 .My-Color-Theme-2-hex { color: #E1C762; }
-.My-Color-Theme-3-hex { color: #E08A51; }
+.My-Color-Theme-3-hex { color: #e08a51; }
 .My-Color-Theme-4-hex { color: #E05180; }
 .My-Color-Theme-5-hex { color: #D0C3E0; }
 .My-Color-Theme-6-hex { color: #B99BE0; }
 
 /* Color Theme Swatches in RGBA */
-.My-Color-Theme-1-rgba { color: rgba(153, 224, 81, 1); }
+.My-Color-Theme-1-rgba { color: #53891d; }
 .My-Color-Theme-2-rgba { color: rgba(225, 199, 98, 1); }
 .My-Color-Theme-3-rgba { color: rgba(224, 138, 81, 1); }
 .My-Color-Theme-4-rgba { color: rgba(224, 81, 128, 1); }
@@ -34,4 +40,4 @@ body {
 .My-Color-Theme-3-hsla { color: hsla(23, 69, 59, 1); }
 .My-Color-Theme-4-hsla { color: hsla(340, 69, 59, 1); }
 .My-Color-Theme-5-hsla { color: hsla(266, 31, 82, 1); }
-.My-Color-Theme-6-hsla { color: hsla(266, 52, 74, 1); }
+.My-Color-Theme-6-hsla { color: #b89adf; }

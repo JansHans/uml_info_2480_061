@@ -1,0 +1,25 @@
+body {
+    background-color: #fffefa;
+}
+
+h3 {
+    color: darkolivegreen;
+    font-weight: 500;
+}
+
+#topHeader {
+    color: mediumvioletred;
+    font-size: x-large;
+    font-weight: bolder;
+    padding-top: 12px;
+}
+
+.nav-link {
+    color: slateblue;
+}
+
+footer {
+    color: darkolivegreen;
+    font-weight: 500;
+    padding: 12px;
+}

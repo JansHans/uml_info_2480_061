@@ -1,6 +1,7 @@
-<cftry><cfdump var="#form#">
+<cftry>
+    <cfdump var="#form#">
     <cfset addEditFunctions = createObject("addedit")/>
-    <!--- <cfset addEditFunctions.processForms(form)> --->
+    <cfset addEditFunctions.processForms(form)>
     
     <div class="row">
         <div id="main" class="col-9">
@@ -39,8 +40,9 @@
     <cfoutput>
         <ul class="nav flex-column">
             <cfloop query="allbooks">
-                <li class=”nav-item”>
-                    <a class=”nav-link”>#trim(title)#</a></li>
+                <li class="nav-item">
+                    <a class="nav-link">#trim(title)#</a>
+                </li>
             </cfloop>
         </ul>
     </cfoutput>

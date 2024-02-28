@@ -5,18 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/
 dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha38
-4-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK
-8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.
-2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM
-9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" cro
+4-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ
+6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.
+3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gl
+Creating Our First Management Page 3
+n4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" cro
 ssorigin="anonymous"></script>
-</head>
+    </head>
 
 <body>
-    <cfparam name="tool" default="addEdit" />
+    <cfparam name="tool" default="addedit" />
 
     <div id="wrapper" class="container">
         <div id="navarea"> NAV </div>

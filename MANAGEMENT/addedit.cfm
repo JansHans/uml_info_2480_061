@@ -1,5 +1,5 @@
 <cftry>
-    <cfdump var="#form#">
+
     <cfparam name="book" default="" >
     <cfparam name="qTerm" default="" >
 
@@ -45,10 +45,6 @@
         <div class="form-floating mb-3">
             <input type="number" id="year" name="year" step="1" class="form-control" value="#thisBookDetails.year#" placeholder="Please enter the Year Published" />
             <label for="year">Year: </label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" id="isbn" name="isbn" class="form-control" value="#thisBookDetails.isbn#" placeholder="Please enter the book's ISBN" />
-            <label for="isbn">ISBN: </label>
         </div>
         <div class="form-floating mb-3">
             <input type="number" id="pages" name="pages" step="1" class="form-control" value="#thisBookDetails.pages#" placeholder="Please enter the number of pages" />
@@ -137,5 +133,6 @@
                 <label for="qterm">Search Inventory </label>
             </div>
         </form>
+        
     </cfoutput>
 </cffunction>

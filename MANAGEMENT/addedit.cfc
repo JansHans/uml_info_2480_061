@@ -1,10 +1,15 @@
 component {
    
     function processForms( required struct formData ){
-        if (formData.keyExists( "isbn13" ) && formData.isbn13.len() == 13 && formData.keyExists("title") && formData.title.len() > 0) {
-        if ( formData.keyExists( "uploadImage" ) && formData.uploadImage.len() > 0) {
-            formData.image = uploadBookCover();
-        }
+        writeDump(formData);
+        if (formData.keyExists( "isbn13" ) && formData.keyExists("title") && formData.title.len() > 0) {
+        
+            if (formData.keyExists( "uploadImage" ) && formData.uploadImage.len()) {
+                arguments.formData.image = uploadBookCover();
+            }
+
+        writeDump(formData);
+
         var qs = new query( datasource = application.dsource );
         qs.setSql( "
             IF NOT EXISTS( SELECT * FROM books WHERE isbn13=:isbn13)
@@ -14,7 +19,6 @@ component {
                 title=:title,
                 weight=:weight,
                 year=:year,
-                isbn=:isbn,
                 pages=:pages,
                 publisherId=:publisherId,
                 image=:image,
@@ -44,11 +48,6 @@ component {
             cfsqltype = "CF_SQL_INTEGER",
             value     = trim(formData.year),
             null      = !isValid("numeric", formData.year)
-        );
-        qs.addParam(
-            name      = "isbn",
-            cfsqltype = "CF_SQL_NVARCHAR",
-            value     = trim(formData.isbn)
         );
         qs.addParam(
             name      = "pages",
@@ -106,7 +105,13 @@ component {
     }
 
     function uploadBookCover(){
-        var imageData = fileUpload(expandPath("../images/"),"uploadImage","*","makeUnique");
-        return imageData.serverFile;
+        var imageData = fileUpload(
+            expandPath("../images/"),
+            "uploadImage",
+            "*",
+            "makeUnique"
+            );
+            writeDump(imageData);
+            return imageData.serverFile;
     }
 }

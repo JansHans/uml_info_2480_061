@@ -1,14 +1,12 @@
 component {
    
     function processForms( required struct formData ){
-        writeDump(formData);
+        
         if (formData.keyExists( "isbn13" ) && formData.keyExists("title") && formData.title.len() > 0) {
         
             if (formData.keyExists( "uploadImage" ) && formData.uploadImage.len()) {
                 arguments.formData.image = uploadBookCover();
             }
-
-        writeDump(formData);
 
         var qs = new query( datasource = application.dsource );
         qs.setSql( "

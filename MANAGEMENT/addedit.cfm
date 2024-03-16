@@ -1,7 +1,9 @@
 <cftry>
+    
+    <!--- <cfdump var = "#form#" /> --->
 
-    <cfparam name="book" default="" >
-    <cfparam name="qTerm" default="" >
+    <cfparam name="book" default="" />
+    <cfparam name="qTerm" default="" />
 
     <cfset addEditFunctions = createObject("addedit") >
     <cfset addEditFunctions.processForms(form) >
@@ -9,7 +11,7 @@
     
     <div class="row">
         <div id="main" class="col-9">
-            <cfif book neq "">
+            <cfif book.len() gt 0 >
                 <cfoutput>#mainForm()#</cfoutput>
             </cfif>
         </div>
@@ -31,23 +33,23 @@
     <cfoutput>
         <form action="#cgi.script_name#?tool=addedit&book=#book#&qterm=#qterm#" method ="POST" enctype="multipart/form-data" >
         <div class="form-floating mb-3">    
-            <input type="text" id="isbn13" name="isbn13" class="form-control" value="#thisBookDetails.isbn13#" placeholder="Please enter the book's ISBN13" />
+            <input type="text" id="isbn13" name="isbn13" class="form-control" value="#thisBookDetails.isbn13[1]#" placeholder="Please enter the book's ISBN13" />
             <label for="isbn13">ISBN13: </label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" id="title" name="title" class="form-control" value="#thisBookDetails.title#" placeholder="Please enter the book's title"/>
+            <input type="text" id="title" name="title" class="form-control" value="#thisBookDetails.title[1]#" placeholder="Please enter the book's title"/>
             <label for="title">Book Title: </label>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" id="weight" name="weight" step=".1" class="form-control" value="#thisBookDetails.weight#" placeholder="Please enter the book's weight" />
+            <input type="number" id="weight" name="weight" step=".1" class="form-control" value="#thisBookDetails.weight[1]#" placeholder="Please enter the book's weight" />
             <label for="weight">Weight: </label>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" id="year" name="year" step="1" class="form-control" value="#thisBookDetails.year#" placeholder="Please enter the Year Published" />
+            <input type="number" id="year" name="year" step="1" class="form-control" value="#thisBookDetails.year[1]#" placeholder="Please enter the Year Published" />
             <label for="year">Year: </label>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" id="pages" name="pages" step="1" class="form-control" value="#thisBookDetails.pages#" placeholder="Please enter the number of pages" />
+            <input type="number" id="pages" name="pages" step="1" class="form-control" value="#thisBookDetails.pages[1]#" placeholder="Please enter the number of pages" />
             <label for="pages">Number of Pages: </label>
         </div>
         <div class="form-floating mb-3">
@@ -79,7 +81,7 @@
                 <label for="description">Description</label>
             </div>
                 <textarea id="description" name="description">
-                    <cfoutput>#thisBookDetails.description#</cfoutput>
+                    <cfoutput>#thisBookDetails.description[1]#</cfoutput>
                 </textarea>
                 <script>
                     ClassicEditor
@@ -99,18 +101,13 @@
     <div>
         Book List
     </div>
-
     <cfoutput>
        #findBookForm()#
-    </cfoutput>
-    <cfoutput>
-        <ul class="nav flex-column">
+       <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#cgi.script_name#?tool=adddedit&book=new">
-                    New Book
-                </a>
+                <a class="nav-link" href="#cgi.script_name#?tool=adddedit&book=new">New Book</a>
             </li>
-        <cfif qTerm.len() == 0>
+            <cfif qTerm.len() == 0>
                 No Search Term Entered
             <cfelseif allBooks.recordcount == 0>
                 No Results Found

@@ -2,7 +2,7 @@
 
 <cfdump var=#form# />
 <cfoutput>
-    <cfset bookInfo = bookstoreFunctions.obstainSearchResults( searchme )/>
+    <cfset bookInfo = bookstoreFunctions.obtainSearchResults( searchme )/>
 
     <cfif bookinfo.recordcount == 0>
        #noResults()# 
@@ -15,11 +15,11 @@
     <cfdump var="#bookinfo#"/>
 </cfoutput>
 
-<cffunction name="noResults()">
+<cffunction name="noResults">
     "There were no result to be found. Please try again."
 </cffunction>
 
-<cffunction name="oneResult()">
+<cffunction name="oneResult">
     <div class="row">
         <div class="col-6">
             <cfoutput>
@@ -32,7 +32,7 @@
     "There was one result, show the details"
 </cffunction>
 
-<cffunction name="manyResults()">
+<cffunction name="manyResults">
     <cfoutput>
         <div>
             <div>

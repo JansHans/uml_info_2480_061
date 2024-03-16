@@ -105,7 +105,7 @@
        #findBookForm()#
        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#cgi.script_name#?tool=adddedit&book=new">New Book</a>
+                <a class="nav-link" href="#cgi.script_name#?tool=addedit&book=new">New Book</a>
             </li>
             <cfif qTerm.len() == 0>
                 No Search Term Entered

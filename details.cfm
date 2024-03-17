@@ -1,6 +1,6 @@
 <cfparam name="searchme" default=""/>
 
-<cfdump var=#form# />
+<!--- <cfdump var=#form# /> --->
 <cfoutput>
     <cfset bookInfo = bookstoreFunctions.obtainSearchResults( searchme )/>
 
@@ -12,11 +12,11 @@
          #manyResults()#    
     </cfif>
 
-    <cfdump var="#bookinfo#"/>
+    <!--- <cfdump var="#bookinfo#"/> --->
 </cfoutput>
 
 <cffunction name="noResults">
-    "There were no result to be found. Please try again."
+    "There were no results found. Please try again."
 </cffunction>
 
 <cffunction name="oneResult">
@@ -29,7 +29,7 @@
             </cfoutput>
         </div>
     </div>
-    "There was one result, show the details"
+    "There was one result found."
 </cffunction>
 
 <cffunction name="manyResults">
@@ -50,5 +50,5 @@
 
         </div>
     </cfoutput>
-    "There were more than one result, show a list."
+    "There were more than one result."
 </cffunction>

@@ -23,17 +23,27 @@
             </li>
         </ul>
         <cfoutput>
-        <form class="d-flex" action="#cgi.script_name#?p=details" method="post">
-            <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav mr-auto">
-        
-            <li class="nav-item">
-                <a class="nav-link" href="#cgi.script_name#?p=login">Login</a>
-            </li>
-    
-        </ul>
+            <form class="d-flex" action="#cgi.script_name#?p=details" method="post">
+                <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav mr-auto">
+                <cfif session.user.isloggedin>
+                    <li class="nav-item">
+                        <a>Welcome #session.user.firstname#</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cgi.script_name#?p=logoff ">logout</a>
+                    </li>
+                <cfelse>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cgi.script_name#?p=login">Login</a>
+                    </li>
+                </cfif>
+                <cfif session.user.isadmin>
+                    <a href="#cgi.SCRIPT_NAME#/?tool=management/index.cfm">Management Page</a>
+                </cfif> 
+            </ul>
         </cfoutput>
     </div>
 </nav>

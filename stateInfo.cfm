@@ -12,8 +12,8 @@
     <cfset accountMessage = newAccountResult.message />
 </cfif>
 
-<cfif form.keyExists("loginPass")>
-    <cfset userData = stateFunctions.logMeIn(form.loginEmail, form.loginPass) />
+<cfif form.keyExists("loginpass")>
+    <cfset userData = stateFunctions.logMeIn(form.loginemail, form.loginpass) />
         <cfif userData.recordCount == 1>
             <cfset session.user=stateFunctions.obtainUser(
                 isLoggedIn=1,

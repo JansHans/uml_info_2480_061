@@ -1,6 +1,5 @@
 <cfparam name="searchme" default=""/>
 
-<!--- <cfdump var=#form# /> --->
 <cfoutput>
     <cfset bookInfo = bookstoreFunctions.obtainSearchResults( searchme )/>
 
@@ -12,7 +11,6 @@
          #manyResults()#    
     </cfif>
 
-    <!--- <cfdump var="#bookinfo#"/> --->
 </cfoutput>
 
 <cffunction name="noResults">

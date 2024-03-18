@@ -10,7 +10,7 @@
             document.getElementById("submitNewAccountForm").click();
         } else {
             document.getElementById("accountMessage").innerHTML = 
-            "Please check that you entered your password and the confirmed password entry.";
+            "Please check that you entered your password and the confirmed password.";
             console.dir("It didn't work");
         }
     }

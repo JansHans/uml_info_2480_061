@@ -2,12 +2,12 @@ component {
 
     function obtainUser() {
         return {
-        isLoggedIn:"",
-        firstname: "",
-        lastname: "",
-        email: "",
-        acctNumber:"",
-        isAdmin=0
+        "isLoggedIn":"",
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "acctNumber":"",
+        "isAdmin"=0
     }
 }
 
@@ -15,24 +15,23 @@ component {
         var retme = {
             success:false, message:""
         }
-
-        if(emailUnique(formdata.email)){
+        if(emailUnique(formData.email)){
             var newId = createuuid();
-            if (addPassword(newId, formData.password ) ) {
+            if(addPassword(newId, formData.password)){
                 addAccount(newId, formData.title, formData.firstname, formData.lastname, formData.email);
                 retme.success=true;
-                retme.message = "Your new account was created! Please login.";
+                retme.message = "Welcome! Your account was created. Please login.";
             } else {
                 retme.message = "There was a problem. Please resubmit.";
             }
         } else {
-            retme.message = "That email is already in our database. Please log in.";
+            retme.message = "That email is already registered. Please log in.";
         }
         return retme;
     }
 
-    function emailUnique(required string email) {
-        var qs = new query(datasource = application.dsource);
+    function emailUnique(required string email){
+        var qs = new query(datasource=application.dsource);
         qs.setSql("select * from people where email=:email");
         qs.addParam(
             name="email", 
@@ -101,10 +100,9 @@ component {
 
             function logMeIn(username, password){
                 var qs = new query(datasource=application.dsource);
-                qs.setSql("
-                SELECT * FROM people
-                INNER JOIN passwords ON people.id=passwords.personid
-                WHERE email=:email and password=:password");
+                qs.setSql("SELECT * FROM people
+                        INNER JOIN passwords ON people.id=passwords.personid
+                        WHERE email=:email and password=:password");
                 qs.addParam(
                     name="email", 
                     value=arguments.username

@@ -1,23 +1,15 @@
 component {
 
     function obtainUser() {
-        isLoggedIn = false;
-        firstname="";
-        lastname="";
-        email="";
-        acctNumber="";
-        isAdmin=0;
         return {
-            isLoggedIn:=arguments.isLoggedIn,
-            firstname:arguments.firstname,
-            lastname:arguments.lastname,
-            email:arguments.email,
-            acctNumber:arguments.acctNumber,
-            isAdmin:arguments.isAdmin
-            };
-    
+        isLoggedIn:"",
+        firstname: "",
+        lastname: "",
+        email: "",
+        acctNumber:"",
+        isAdmin=0
     }
-
+}
 
     function processNewAccount(formData){
         var retme = {

@@ -1,4 +1,6 @@
 <cfset stateFunctions = createObject("stateInfo") />
+
+<cfdump var = "#session#" />
 <cfset session.clear() />
 
 <cfif !session.keyExists("user")>

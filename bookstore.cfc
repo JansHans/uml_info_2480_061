@@ -1,13 +1,16 @@
 component {
-    function obtainSearchResults(searchme){
+    function obtainSearchResults(required string searchme){
         var qs = new query(datasource=application.dsource);
         qs.setSql("
-            select * from books 
-            inner join publishers on books.publisherid = publishers.id
-            where title like :searchme");
+            SELECT * FROM books 
+            INNER JOIN publishers ON books.publisherid = publishers.id
+            WHERE title LIKE :searchme OR isbn13= :isbn13");
         qs.addParam(name="searchme", value="%#searchme#%");
+        qs.addParam(name="isbn13", value="#searchme#");
         return qs.execute().getResult();
     }  
 
 }
+
+
 

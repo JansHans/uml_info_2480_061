@@ -11,7 +11,18 @@
     
     <div class="row">
         <div id="main" class="col-9">
-            <cfif book.len() gt 0 >
+            <cfif book.len() gt 0 
+            function allGenres(genres){
+                var qs = new query(datasource=application.dsource);
+                qs.setSql("SELECT * FROM genres ORDER BY genreName");
+                return qs.execute().getResult();
+            function allGenres(isbn13){
+                    var qs = new query(datasource=application.dsource);
+                    qs.setSql("SELECT * FROM genresToBook 
+                    INNER JOIN genres ON books.genreId 
+                    WHERE isbn13=:isbn13");
+                    return qs.execute().getResult();
+                }
                 <cfoutput>#mainForm()#</cfoutput>
             </cfif>
         </div>

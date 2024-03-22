@@ -1,3 +1,5 @@
+<cfdump var="#form#">
+
 <cfparam name="searchme" default=""/>
 
 <cfoutput>
@@ -14,7 +16,7 @@
 </cfoutput>
 
 <cffunction name="noResults">
-    "There were no results found. Please try again."
+    <h6>There were no results found. Please try again.</h6>
 </cffunction>
 
 <cffunction name="oneResult">
@@ -26,19 +28,20 @@
                 <span>Publisher: #bookinfo.name[1]#</span>
             </cfoutput>
         </div>
-    </div>
-    "There was one result found."
+    </div><br>
+    <h6>There was one result found.</h6>
 </cffunction>
 
 <cffunction name="manyResults">
+    <h6>Your results are below:</h6><br>
+    
     <cfoutput>
         <div>
             <div>
               <ol class="nav flex-column">
                 <cfoutput query="bookinfo">
                     <li class="nave-item">
-                        <a class="nav-link" href="#cgi.script_name#?
-                        =details&searchme=#trim(isbn13)#">
+                        <a class="nav-link" href="#cgi.script_name#?p=details&searchme=#trim(isbn13)#">
                             #trim(title)#
                         </a>
                     </li>
@@ -48,5 +51,5 @@
 
         </div>
     </cfoutput>
-    "There were more than one result."
+    
 </cffunction>

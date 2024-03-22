@@ -1,5 +1,5 @@
 component {
-
+    // The function, obtainUser, is used in stateInfo.cfm
     function obtainUser() {
         return {
         "isLoggedIn":"",
@@ -8,8 +8,9 @@ component {
         "email": "",
         "acctNumber":"",
         "isAdmin"=0
+        }
+        
     }
-}
 
     function processNewAccount(formData){
         var retme = {
@@ -32,7 +33,7 @@ component {
 
     function emailUnique(required string email){
         var qs = new query(datasource=application.dsource);
-        qs.setSql("select * from people where email=:email");
+        qs.setSql("SELECT * FROM people WHERE email=:email");
         qs.addParam(
             name="email", 
             value=arguments.email
@@ -100,9 +101,11 @@ component {
 
             function logMeIn(username, password){
                 var qs = new query(datasource=application.dsource);
-                qs.setSql("SELECT * FROM people
+                qs.setSql(
+                    "SELECT * FROM people
                         INNER JOIN passwords ON people.id=passwords.personid
-                        WHERE email=:email and password=:password");
+                        WHERE email=:email and password=:password"
+                        );
                 qs.addParam(
                     name="email", 
                     value=arguments.username
@@ -113,6 +116,9 @@ component {
                     );
                 return qs.execute().getResult();
                }
+
+            
                 
        
+        
 }

@@ -21,18 +21,28 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Events</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="management/index.cfm">Management</a>
+            </li>
         </ul>
     <cfoutput>
         <form class="d-flex" action="#cgi.script_name#?p=details" method="post">
             <input class="form-control me-2" type="search" name="searchme" placeholder="Search"
             aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-    </cfoutput>  
+        </form>
+
+        
         <ul class="navbar-nav mr-auto">
+            <cfif session.user.isLoggedIn>
             <li class="nav-item">
-                <a class="nav-link" href="#cgi.script_name#?p=logoff">Log Out</a>
+                <a class="nav-link" href="#cgi.script_name#?p=logoff">Logout</a>
             </li>
+        <cfelse>
+            <li class="nav-item">
+                <a class="nav-link" href="#cgi.script_name#?p=login">Login</a>
+        </cfif>
         </ul>
+    </cfoutput>
     </div>
 </nav>

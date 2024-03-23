@@ -112,4 +112,8 @@ component {
             writeDump(imageData);
             return imageData.serverFile;
     }
+
+    function allGenres() {
+
+    }
 }

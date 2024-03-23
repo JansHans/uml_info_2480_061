@@ -1,6 +1,6 @@
 <cftry>
     
-    <!--- <cfdump var = "#form#" /> --->
+    <cfdump var = "#form#" />
 
     <cfparam name="book" default="" />
     <cfparam name="qTerm" default="" />
@@ -8,21 +8,10 @@
     <cfset addEditFunctions = createObject("addedit") >
     <cfset addEditFunctions.processForms(form) >
     
-    
     <div class="row">
         <div id="main" class="col-9">
-            <cfif book.len() gt 0 
-            function allGenres(genres){
-                var qs = new query(datasource=application.dsource);
-                qs.setSql("SELECT * FROM genres ORDER BY genreName");
-                return qs.execute().getResult();
-            function allGenres(isbn13){
-                    var qs = new query(datasource=application.dsource);
-                    qs.setSql("SELECT * FROM genresToBook 
-                    INNER JOIN genres ON books.genreId 
-                    WHERE isbn13=:isbn13");
-                    return qs.execute().getResult();
-                }
+            <cfif book.len() gt 0 >
+                
                 <cfoutput>#mainForm()#</cfoutput>
             </cfif>
         </div>
@@ -39,6 +28,7 @@
 </cftry>
 
 <cffunction name="mainForm">
+
     <cfset var thisBookDetails=addEditFunctions.bookDetails(book) >
     <cfset var allPublishers = addEditFunctions.allPublishers() >
     <cfoutput>

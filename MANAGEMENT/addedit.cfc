@@ -1,7 +1,7 @@
 component {
    
     function processForms( required struct formData ){
-        
+        // writeDump (formData);
         if (formData.keyExists( "isbn13" ) && formData.keyExists("title") && formData.title.len() > 0) {
         
             if (formData.keyExists( "uploadImage" ) && formData.uploadImage.len()) {
@@ -72,6 +72,18 @@ component {
             null      = trim(formData.description).len() == 0
          );
         qs.execute();
+
+        // finish
+        // if(formData.keyExists("genre")){
+
+        //     deleteAllBookGenres(formData)
+
+        //     formData.genre.listToArray().each( function(item){
+        //         insertGenre(item, formData.isbn13)
+        //     }
+        // }
+
+
         }
     }
 
@@ -113,7 +125,26 @@ component {
             return imageData.serverFile;
     }
 
-    function allGenres() {
-
+    function allGenres(isbn13){
+        var qs = new query(datasource=application.dsource);
+        qs.setSql("select * from genres order by name");
+        return qs.execute().getResult();
     }
+
+    // finish
+    // accepts the genreid and the BookId (isbn13) and inserts them
+   // in the genreToBooks Table
+    // function insertGenre(genreId, bookId){
+    //     var qs = new query(datasource=application.dsource);
+    //     qs.setSql("insert into genresToBook(bookid, genreid) VALUES (:bookid, :genreid) ");
+    //     qs.addParam(name="bookid", value=argument.bookId);
+    //     qs.addParam(name="genreid", value=argument.genreId);
+    // }
+    // // finish
+    // function deleteAllBookGenres(bookId){
+    //     var qs = new query(datasource=application.dsource);
+    //     qs.setSql("delete from genresToBook WHERE bookid=:bookid");
+    //     qs.addParam(name="bookid", value=argument.bookId);
+    //     qs.addParam(name="genreid", value=argument.genreId);
+    // }
 }

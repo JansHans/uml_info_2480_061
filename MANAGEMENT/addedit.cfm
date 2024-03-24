@@ -1,17 +1,14 @@
 <cftry>
     
-    <cfdump var = "#form#" />
-
     <cfparam name="book" default="" />
     <cfparam name="qTerm" default="" />
 
     <cfset addEditFunctions = createObject("addedit") >
     <cfset addEditFunctions.processForms(form) >
-    
+
     <div class="row">
         <div id="main" class="col-9">
-            <cfif book.len() gt 0 >
-                
+            <cfif book.len() gt 0 >  
                 <cfoutput>#mainForm()#</cfoutput>
             </cfif>
         </div>
@@ -31,6 +28,8 @@
 
     <cfset var thisBookDetails=addEditFunctions.bookDetails(book) >
     <cfset var allPublishers = addEditFunctions.allPublishers() >
+    <cfset var allGenres = addEditFunctions.allGenres()/>
+    <cfdump var="#allGenres#" />
     <cfoutput>
         <form action="#cgi.script_name#?tool=addedit&book=#book#&qterm=#qterm#" method ="POST" enctype="multipart/form-data" >
         <div class="form-floating mb-3">    
@@ -62,6 +61,7 @@
             </select>
             <label for="publisher">Publisher: </label>
         </div>
+       >
         <div class="row">
             <div class="col">
                     <label for="uploadImage">Upload Cover</label>
@@ -93,6 +93,22 @@
         <div class="form-floating mb-3">
             <button type="submit" class="btn btn-primary" style="width: 100%">Add Book</button>
         </div>
+        
+        <div>
+            <h5>Genres</h5>
+            <cfloop query="allGenres">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="#id#" id="genre#id#">
+                    <label class="form-check-label" for="genre#id#">
+                      #name#
+                    </label>
+                  </div>
+                  
+
+            </cfloop>
+            
+        </div>
+        <label for="genres">Genres</label
         </form>
     </cfoutput>
 </cffunction>

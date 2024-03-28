@@ -1,9 +1,8 @@
-<cfdump var="#form#">
-
 <cfparam name="searchme" default=""/>
+<cfparam name="genre" default=""/>
 
 <cfoutput>
-    <cfset bookInfo = bookstoreFunctions.obtainSearchResults( searchme )/>
+    <cfset bookInfo = bookstoreFunctions.obtainSearchResults( searchme, genre )/>
 
     <cfif bookinfo.recordcount == 0>
        #noResults()# 
@@ -25,7 +24,9 @@
             <cfoutput>
                 <img src="images/#bookinfo.image[1]#" style = "float:left; width:250px; height:250px" />
                 <span>Title: #bookinfo.title[1]#</span>
-                <span>Publisher: #bookinfo.name[1]#</span>
+                <!--- the line below gave an error, so I added "name" to books table in db, but now it 
+                gives a blank result - will ask Prof. Dan about it on Friday or Saturday --->
+                <!--- <span>Publisher: #bookinfo.name[1]#</span> --->
             </cfoutput>
         </div>
     </div><br>

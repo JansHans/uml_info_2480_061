@@ -26,11 +26,13 @@
 
 <cffunction name="mainForm">
 
-    <cfset var thisBookDetails=addEditFunctions.bookDetails(book) >
-    <cfset var allPublishers = addEditFunctions.allPublishers() >
-    <cfset var allGenres = addEditFunctions.allGenres()/>
-    <cfdump var="#allGenres#" />
+    <cfset var thisBookDetails=addEditFunctions.bookDetails(book) />
+    <cfset var allPublishers = addEditFunctions.allPublishers() />
+    <cfset var allGenres = addEditFunctions.allGenres() />
+    <cfset var allGenresForThisBook = addEditFunctions.bookGenres(book) />
+
     <cfoutput>
+        <h6>Fill out the form below to enter a new book:</h6>
         <form action="#cgi.script_name#?tool=addedit&book=#book#&qterm=#qterm#" method ="POST" enctype="multipart/form-data" >
         <div class="form-floating mb-3">    
             <input type="text" id="isbn13" name="isbn13" class="form-control" value="#thisBookDetails.isbn13[1]#" placeholder="Please enter the book's ISBN13" />
@@ -61,7 +63,7 @@
             </select>
             <label for="publisher">Publisher: </label>
         </div>
-       >
+       
         <div class="row">
             <div class="col">
                     <label for="uploadImage">Upload Cover</label>
@@ -90,25 +92,24 @@
                         .catch(error => {console.dir(error)});
                 </script>
         </div>
-        <div class="form-floating mb-3">
-            <button type="submit" class="btn btn-primary" style="width: 100%">Add Book</button>
-        </div>
-        
+
         <div>
-            <h5>Genres</h5>
+            <h6>Genres</h6>
             <cfloop query="allGenres">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="#id#" id="genre#id#">
+                    <input class="form-check-input" type="checkbox" value="#id#" id="genre#id#" name="genre" >
                     <label class="form-check-label" for="genre#id#">
                       #name#
                     </label>
-                  </div>
-                  
-
+                </div>  
             </cfloop>
-            
+            <cfloop query = "allGenresForThisBook" >
+                <script type="text/javascript">
+                    document.getElementById("genre#genreId#").checked=true;
+                </script>
+            </cfloop>
         </div>
-        <label for="genres">Genres</label
+        <button type="submit" class="btn btn-primary" style="width: 100%">Add Book</button>
         </form>
     </cfoutput>
 </cffunction>

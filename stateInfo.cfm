@@ -32,9 +32,3 @@
         </cfif>       
 </cfif>
 
-
-
-<!--- <cfif url.keyExists("p") && url.p =='logoff'>
-    <cfset session.user = stateFunctions.obtainUser() />
-   <cfset p="carousel"/>
-</cfif> --->

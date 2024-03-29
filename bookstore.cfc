@@ -11,7 +11,9 @@ component {
         return qs.execute().getResult();
         } else if (genre.len()){
             var qs = new query(datasource=application.dsource);
-            qs.setSql("select * from books inner join genreToBook 
+            qs.setSql("select * from books 
+            INNER JOIN publishers ON books.publisherid = publishers.id
+            inner join genreToBook
             on books.isbn13 = genreToBook.bookId
             where genreToBook.genreId = :genreId")
             qs.addParam(name="genreId", value=arguments.genre)

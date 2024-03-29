@@ -26,11 +26,11 @@
                 <span>Title: #bookinfo.title[1]#</span>
                 <!--- the line below gave an error, so I added "name" to books table in db, but now it 
                 gives a blank result - will ask Prof. Dan about it on Friday or Saturday --->
-                <!--- <span>Publisher: #bookinfo.name[1]#</span> --->
+                <span>Publisher: #bookinfo.name[1]#</span>
             </cfoutput>
         </div>
     </div><br>
-    <h6>There was one result found.</h6>
+    
 </cffunction>
 
 <cffunction name="manyResults">

@@ -3,7 +3,7 @@
     <cfparam name="content" default="" />
     <cfparam name="qTerm" default="" /> 
 
-    <cfset addEditContentFunctions = createObject("addeditcontent") >
+    <cfset addEditContentFunctions = createObject("managecontent") >
     <cfset addEditContentFunctions.processForms(form) >
 
     <div class="row">
@@ -29,12 +29,12 @@
     <cfset var thisContentDetails=addEditContentFunctions.contentDetails(content) />
     
     <cfset var allContents = addEditContentFunctions.allContents() />
-    <cfset var allContentsForContent = addEditFunctions.contentContents(content) />
+    <cfset var allContentsForContent = addEditContentFunctions.contentContents(content) />
 
     <cfoutput>
         
         <h6>Fill out the form below to enter a new content article:</h6>
-        <form action="#cgi.script_name#?tool=addeditcontent&content=#content#&qterm=#qterm#" method ="POST" enctype="multipart/form-data" >
+        <form action="#cgi.script_name#?tool=managecontent&content=#content#&qterm=#qterm#" method ="POST" enctype="multipart/form-data" >
         <div class="form-floating mb-3">    
             <input type="text" id="id" name="id" class="form-control" value="#thisContentDetails.id[1]#" placeholder="Please enter a new UUID" />
             <label for="id">New UUID: </label>
@@ -87,7 +87,7 @@
        #findContentForm()#
        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#cgi.script_name#?tool=addeditcontent&content=new">Click Here to Enter A New Content Article</a><hr>
+                <a class="nav-link" href="#cgi.script_name#?tool=managecontent&content=new">Click Here to Enter A New Content Article</a><hr>
             </li>
             <cfif qTerm.len() == 0>
                 <!--- No Search Term Entered --->
@@ -96,7 +96,7 @@
             <cfelse>
             <cfloop query="allContents">
                 <li class="nav-item">
-                    <a class="nav-link" href="#cgi.script_name#?tool=addeditcontent&content=#id#&qTerm=#qTerm#" >#trim(title)#</a>
+                    <a class="nav-link" href="#cgi.script_name#?tool=managecontent&content=#id#&qTerm=#qTerm#" >#trim(title)#</a>
                 </li>
             </cfloop>
         </cfif>

@@ -32,6 +32,7 @@
     <cfset var allGenresForThisBook = addEditFunctions.bookGenres(book) />
 
     <cfoutput>
+        
         <h6>Fill out the form below to enter a new book:</h6>
         <form action="#cgi.script_name#?tool=addedit&book=#book#&qterm=#qterm#" method ="POST" enctype="multipart/form-data" >
         <div class="form-floating mb-3">    
@@ -115,18 +116,17 @@
 </cffunction>
 
 <cffunction name="sideNav">
-    <cfset var allBooks = addEditFunctions.sideNavBooks(qTerm) >
-    <div>
-        Book List
-    </div>
+    <cfset var allBooks = addEditFunctions.sideNavBooks(qTerm) >    
+    
     <cfoutput>
+        
        #findBookForm()#
        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#cgi.script_name#?tool=addedit&book=new">New Book</a>
+                <a class="nav-link" href="#cgi.script_name#?tool=addedit&book=new">Enter A New Book</a>
             </li>
             <cfif qTerm.len() == 0>
-                No Search Term Entered
+                <!--- No Search Term Entered --->
             <cfelseif allBooks.recordcount == 0>
                 No Results Found
             <cfelse>
@@ -136,6 +136,7 @@
                 </li>
             </cfloop>
         </cfif>
+        
         </ul>
     </cfoutput>
 </cffunction>
@@ -148,6 +149,21 @@
                 <label for="qterm">Search Inventory </label>
             </div>
         </form>
-        
     </cfoutput>
+</cffunction>
+
+<cffunction name="manageContent">
+    <div class="form-floating mb-3">
+        <div>
+            <label for="description">Description</label>
+        </div>
+            <textarea id="description" name="description">
+                <cfoutput>#thisBookDetails.description[1]#</cfoutput>
+            </textarea>
+            <script>
+                ClassicEditor
+                    .create(document.querySelector("##description"))
+                    .catch(error => {console.dir(error)});
+            </script>
+    </div>
 </cffunction>

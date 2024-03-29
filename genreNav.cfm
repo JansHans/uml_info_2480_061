@@ -2,15 +2,15 @@
 
 
 <h3>Search By Genre</h3>
-            <ul class="nav flex-column">
-                <cfoutput query = "genresInStock" >
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#cgi.SCRIPT_NAME#?p=details&genre=#genreId#">#name#</a>
-                </li>
+<ul class="nav flex-column">
+    <cfoutput query = "genresInStock" >
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#cgi.SCRIPT_NAME#?p=details&genre=#genreId#">#name#</a>
+    </li>
 
-                </cfoutput>
-            </ul>
+    </cfoutput>
+</ul>
 
             <!--- <li class="nav-item"><a class="nav-link">Childrens's Books</a></li>
             <li class="nav-item"><a class="nav-link">Mysteries</a></li>

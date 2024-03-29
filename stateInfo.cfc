@@ -28,7 +28,7 @@ component {
             if(addPassword(newId, formData.password)){
                 addAccount(newId, formData.title, formData.firstname, formData.lastname, formData.email);
                 retme.success=true;
-                retme.message = "Welcome! Your account was created. Please login.";
+                retme.message = "Welcome, <cfoutput>#firstname#</cfoutput>! Your account was created. Please login.";
             } else {
                 retme.message = "There was a problem. Please resubmit.";
             }

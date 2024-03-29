@@ -155,7 +155,7 @@ component {
 
     function bookGenres(bookId) {
         var qs = new query(datasource = application.dsource);
-        qs.setSql("select * from genreToBook where bookId=bookId");
+        qs.setSql("select * from genreToBook where bookId=:bookId");
         qs.addParam(name="bookId", value = arguments.bookId);
         return qs.execute().getResult();
     }

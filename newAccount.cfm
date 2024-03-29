@@ -65,8 +65,6 @@
             <button type="button" class="btn btn-warning" onclick="validateNewAccount()">Make New Account</button>
             <input type="submit" id="submitNewAccountForm" style="display:none"/>
         </div>
-
-
     </form>
 </cfoutput>
 

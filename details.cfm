@@ -41,7 +41,7 @@
             <div>
               <ol class="nav flex-column">
                 <cfoutput query="bookinfo">
-                    <li class="nave-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#cgi.script_name#?p=details&searchme=#trim(isbn13)#">
                             #trim(title)#
                         </a>
